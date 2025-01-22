@@ -1,0 +1,52 @@
+{
+  "name": "uno-colors",
+  "type": "module",
+  "version": "0.0.0",
+  "packageManager": "pnpm@9.15.4",
+  "description": "Generate UnoCSS color gradation",
+  "author": "imba97",
+  "license": "MIT",
+  "homepage": "https://github.com/imba97/uno-colors#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/imba97/uno-colors"
+  },
+  "bugs": {
+    "url": "https://github.com/imba97/uno-colors/issues"
+  },
+  "keywords": [
+    "uno-colors",
+    "unocss"
+  ],
+  "main": "dist/index.mjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepare": "simple-git-hooks",
+    "stub": "unbuild --stub",
+    "build": "unbuild",
+    "test": "vitest",
+    "lint": "eslint --cache",
+    "release": "bumpp"
+  },
+  "devDependencies": {
+    "@imba97/eslint-config": "^0.0.5",
+    "@types/node": "^22.10.7",
+    "bumpp": "^9.10.2",
+    "eslint": "^9.18.0",
+    "lint-staged": "^15.4.1",
+    "simple-git-hooks": "^2.11.1",
+    "typescript": "^5.7.3",
+    "unbuild": "^3.3.1",
+    "vitest": "^3.0.3"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --cache --fix"
+  }
+}
