@@ -13,11 +13,11 @@ function generateColorGradation(base: string): Record<string, string> {
     const center = 4
 
     if (i < center) {
-      baseResult[i] = color(base).darken(0.1 * (center - i)).hex()
+      baseResult[i] = color(base).lighten(0.1 * (center - i)).hex()
       continue
     }
 
-    baseResult[i] = color(base).lighten(0.1 * (i - center)).hex()
+    baseResult[i] = color(base).darken(0.1 * (i - center)).hex()
   }
 
   return baseResult
