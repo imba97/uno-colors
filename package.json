@@ -34,14 +34,14 @@
   },
   "devDependencies": {
     "@imba97/eslint-config": "^0.0.5",
-    "@types/node": "^22.10.7",
-    "bumpp": "^9.10.2",
-    "eslint": "^9.18.0",
-    "lint-staged": "^15.4.1",
+    "@types/node": "^22.13.0",
+    "bumpp": "^10.0.1",
+    "eslint": "^9.19.0",
+    "lint-staged": "^15.4.3",
     "simple-git-hooks": "^2.11.1",
     "typescript": "^5.7.3",
     "unbuild": "^3.3.1",
-    "vitest": "^3.0.3"
+    "vitest": "^3.0.4"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
