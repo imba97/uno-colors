@@ -1,6 +1,8 @@
 import type { UnoColors } from './types'
 import color from './utils/color'
 
+const CENTER = 4
+
 function generateColorGradation(base: string): Record<string, string> {
   const baseResult: Record<string, string> = {
     DEFAULT: base
@@ -10,14 +12,12 @@ function generateColorGradation(base: string): Record<string, string> {
   while (i < 9) {
     i++
 
-    const center = 4
-
-    if (i < center) {
-      baseResult[i] = color(base).lighten(0.1 * (center - i)).hex()
+    if (i < CENTER) {
+      baseResult[i] = color(base).lighten(0.1 * (CENTER - i)).hex()
       continue
     }
 
-    baseResult[i] = color(base).darken(0.1 * (i - center)).hex()
+    baseResult[i] = color(base).darken(0.1 * (i - CENTER)).hex()
   }
 
   return baseResult
