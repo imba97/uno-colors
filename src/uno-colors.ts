@@ -23,17 +23,22 @@ function generateColorGradation(base: string): Record<string, string> {
   return baseResult
 }
 
+function mapDeepColors(obj: any): any {
+  if (typeof obj === 'string') {
+    return generateColorGradation(obj)
+  }
+  if (typeof obj === 'object' && obj !== null) {
+    const result: any = Array.isArray(obj) ? [] : {}
+    for (const key in obj) {
+      result[key] = mapDeepColors(obj[key])
+    }
+    return result
+  }
+  return obj
+}
+
 export function unoColors<
-  T extends Record<string, string>
+  T extends Record<string, any>
 >(colors: T): UnoColors<T> {
-  return Object.entries(colors)
-    .reduce<UnoColors<T>>(
-      (acc, [key, value]) => {
-        return {
-          ...acc,
-          [key]: generateColorGradation(value)
-        }
-      },
-      {} as UnoColors<T>
-    )
+  return mapDeepColors(colors)
 }

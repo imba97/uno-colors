@@ -6,6 +6,10 @@ export interface UnoColor extends IndexedProperties<10> {
   DEFAULT: string
 }
 
-export type UnoColors<T extends Record<string, string>> = {
-  [K in keyof T]: UnoColor
-}
+type UnoColorsDeep<T> = T extends string
+  ? UnoColor
+  : T extends object
+    ? { [K in keyof T]: UnoColorsDeep<T[K]> }
+    : T
+
+export type UnoColors<T> = UnoColorsDeep<T>
