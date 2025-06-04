@@ -2,8 +2,13 @@ import type { UnoColors } from './types'
 import color from './utils/color'
 
 const CENTER = 4
+const gradationCache = new Map<string, Record<string, string>>()
 
 function generateColorGradation(base: string): Record<string, string> {
+  if (gradationCache.has(base)) {
+    return gradationCache.get(base)!
+  }
+
   const baseResult: Record<string, string> = {
     DEFAULT: base
   }
@@ -20,6 +25,7 @@ function generateColorGradation(base: string): Record<string, string> {
     baseResult[i] = color(base).darken(0.1 * (i - CENTER)).hex()
   }
 
+  gradationCache.set(base, baseResult)
   return baseResult
 }
 
